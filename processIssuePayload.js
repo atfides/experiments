@@ -8,7 +8,21 @@
  * > when pr gets merged check if we had that task on our db
  */
 
-function processPayload(payload) {
+function processIssuePayload(payload) {
+  const action = payload.action;
+
+  switch (action) {
+    case "opened":
+      // TODO
+      console.log("user opened new issue");
+
+    case "created":
+      // TODO
+      console.log("user submitted a new comment");
+
+    default:
+      console.log("We don't need that action yet");
+  }
 
   const commenterLogin = payload.comment.user.login;
   const commentText = payload.comment.body;
@@ -21,4 +35,4 @@ function processPayload(payload) {
   console.log("issue Number: ", issueNumber);
 }
 
-module.exports = processPayload;
+module.exports = processIssuePayload;
