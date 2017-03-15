@@ -4,11 +4,18 @@ Exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/
 
 Possibility to activate atFides by creating a new issue or by commenting on an issue.
 
-1. anybody on Github can set up a repo to start paying (activating atfides)
+> anybody on Github can set up a repo to activate atfides
 
+## Architechture
 
+```
++--------------+       +------------------+      +-----------+
+|   index.js   |       |  process inc req |      |  process  |
+|              | ----> |  > branch out    | ---> |           |
+| (run server) |       |  based on event  |      |  payload  |
++--------------+       +------------------+      +-----------+
 
-
+```
 
 ## Lexicon
 

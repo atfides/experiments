@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 
-const processPayload = require('./processPayload');
+const processIssuePayload = require('./processIssuePayload');
 const app = express();
 
 app.use(bodyParser.json());
@@ -9,12 +9,26 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.route("/ping/github/:user/:repo").post( (req, res) => {
 
-  // simple design we monitor issues for task requests
-  // when pr gets merged check if we had any task on our db
+  const typeofPayload = req.headers["x-github-event"];
   const payload = JSON.parse(req.body.payload);
 
-  // process the freaking payload
-  processPayload( payload );
+  switch (typeofPayload) {
+    case "issues":
+      processIssuePayload(payload); return;
+
+    case "issue_comment":
+      // TODO:  write a specific func for issue_comment
+      processIssuePayload(payload); return;
+
+    case "pull_request":
+      throw new Error("Not yet implemented");
+
+    case "push":
+      throw new Error("Not yet implemented");
+
+    default:
+      throw new Error("Sorry we only accept issues, prs and push");
+  }
 
   res.end("That's all folks!!!!");
 });
