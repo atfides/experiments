@@ -3,6 +3,7 @@ function processPushPayload(payload) {
   const pusherEmail = payload.pusher.email;
 
   // TODO: if same login no transactions needed
+  console.log("pusher: ", pusherLogin, pusherEmail);
 
 }
 

@@ -14,14 +14,14 @@ function processIssuePayload(payload) {
   switch (action) {
     case "opened":
       // TODO
-      console.log("user opened new issue");
+      console.log("user opened new issue"); break;
 
     case "created":
       // TODO
-      console.log("user submitted a new comment");
+      console.log("user submitted a new comment"); break;
 
     default:
-      console.log("We don't need that action yet");
+      console.log("We don't need that action yet"); break;
   }
 
   const commenterLogin = payload.comment.user.login;
