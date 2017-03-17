@@ -38,7 +38,6 @@ To analyze payload before transaction, make sure:
 3. repository.has_issues   === true
 4. pull_request.title matches
 
-
 > We'll throw an exception if there's no match for now > the default being to not launch anything
 
 > We will worry about some NLP later && we only care about dev in master
