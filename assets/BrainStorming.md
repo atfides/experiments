@@ -15,26 +15,9 @@
  * How do you lock the user's fund / How does a user recharge his account
 
 
+### How do avoid the problem of users who abfuscate their email: @noreply
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* Make the atFides bot redirect them to the main website to sign up and claim the donation
 
 ## To a magic Experience:
 
@@ -43,3 +26,5 @@
 ### questions to worry about later
 
 * How do you deal with a (force push)?
+
+> Maybe disable atfides on force-pushes
