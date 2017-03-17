@@ -1,4 +1,4 @@
-exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/).
+Exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/).
 
 ## Example of the most basic interaction (MVP)
 
@@ -31,7 +31,16 @@ Chain reaction: when pr gets merged
 +--------+       +------------------+      +----------------+
 ```
 
-> We will worry about some NLP later
+To analyze payload before transaction, make sure:
+
+1. action is closed
+2. repository.has_issues   === true
+3. pull_request.title matches
+4. pull_request.merged === true
+
+> We'll throw an exception if there's no match for now > the default being to not launch anything
+
+> We will worry about some NLP later && we only care about dev in master
 
 ## Lexicon
 
@@ -40,6 +49,7 @@ Chain reaction: when pr gets merged
 ```
 Events | Payloads | Ping
 ```
+
 > Webhooks can be managed using the JSON HTTP API or PubSubHubbub API
 
 ### Events:
