@@ -33,7 +33,9 @@ function processPullRequestPayload(payload) {
   // > we're choosing 2. right now (easier) at the risk of running into a timeout
   const repoFullName = payload.repository.full_name;
 
-  ghGot(`https://api.github.com/repos/${ repoFullName }/issues`).then(res => {
+  ghGot(`https://api.github.com/repos/${ repoFullName }/issues`, {
+    token: process.env.GITHUB_TOKEN
+  }).then(res => {
     const openedIssuesArray = extractIssueTitles(res.body);
 
     // todo
@@ -52,6 +54,11 @@ function processPullRequestPayload(payload) {
     // Todo: fixme
     if (tackledIssue.length > 0) {
       console.log("Pay the user");
+      /* Todo: couple of things 
+       * work from our db
+       * payment processing
+       * further double-checkings
+       */
     } else {
       console.log("Ignore that one");
     }
