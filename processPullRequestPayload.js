@@ -1,3 +1,5 @@
+const ghGot = require('gh-got');
+
 function processPullRequestPayload(payload) {
   const merged = payload.pull_request.merged;
 
@@ -29,14 +31,37 @@ function processPullRequestPayload(payload) {
    */
 
   // > we're choosing 2. right now (easier) at the risk of running into a timeout
+  const repoFullName = payload.repo.full_name;
 
-  const timeMerged = payload.merged_at;
+  ghGot(`https://api.github.com/repos/${ repoFullName }/experiments/issues`).then(res => {
+    const openedIssuesArray = extractIssueTitles(res.body);
 
-  const mergeCommitSha = payload.merge_commit_sha;
+    // todo
+    // quick hack to determine whether pr submitter should receive the funds
 
-  const repoName = payload.repo.full_name;
+    // prTitle without the "Fix:", 4 being the length of it
+    // Yes: it is lame but we'll worry about NLP later
+    let prTitleToCompare = prTitle.slice(4).trim();
+
+    let tackledIssue = openedIssuesArray.filter( issue => {
+      if (issue === prTitleToCompare) {
+        return issue;
+      }
+    });
+
+
+    // Todo: fixme
+    if (tackledIssue.length > 0) {
+      console.log("Pay the user");
+    } else {
+      console.log("Ignore that one");
+    }
+
+  });
 
   // Everything,
+  // const timeMerged = payload.merged_at;
+  // const mergeCommitSha = payload.merge_commit_sha;
 }
 
 function extractIssueTitles(data) {

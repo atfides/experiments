@@ -34,9 +34,10 @@ Chain reaction: when pr gets merged
 To analyze payload before transaction, make sure:
 
 1. action is closed
-2. repository.has_issues   === true
-3. pull_request.title matches
-4. pull_request.merged === true
+2. pull_request.merged === true
+3. repository.has_issues   === true
+4. pull_request.title matches
+
 
 > We'll throw an exception if there's no match for now > the default being to not launch anything
 
