@@ -17,7 +17,7 @@ function processPullRequestPayload(payload) {
     return;
   }
 
-  const prTitle = payload.body;
+  const prTitle = payload.pull_request.title;
 
   /* Goal: match issues names (Titles)
    *
@@ -31,9 +31,9 @@ function processPullRequestPayload(payload) {
    */
 
   // > we're choosing 2. right now (easier) at the risk of running into a timeout
-  const repoFullName = payload.repo.full_name;
+  const repoFullName = payload.repository.full_name;
 
-  ghGot(`https://api.github.com/repos/${ repoFullName }/experiments/issues`).then(res => {
+  ghGot(`https://api.github.com/repos/${ repoFullName }/issues`).then(res => {
     const openedIssuesArray = extractIssueTitles(res.body);
 
     // todo
@@ -48,7 +48,6 @@ function processPullRequestPayload(payload) {
         return issue;
       }
     });
-
 
     // Todo: fixme
     if (tackledIssue.length > 0) {
