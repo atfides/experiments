@@ -13,6 +13,7 @@
 4. How do you prevent "3" from happening in the first place?
 
  * How do you lock the user's fund / How does a user recharge his account
+ * what is one issue is submitted twice with different phrasing
 
 
 
