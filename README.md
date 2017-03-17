@@ -1,10 +1,15 @@
-Exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/).
+exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/).
 
-## exp:
+## Example of the most basic interaction (MVP)
 
-Possibility to activate atFides by creating a new issue or by commenting on an issue.
+1. user A: "Sponsoring $20 to get a better test coverage"
+2. user B submits pr with title: "Fix: Sponsoring $20 to get a better test coverage"
+3. pr gets merged user B gets the $20
 
-> anybody on Github can set up a repo to activate atfides
+### Hard rules
+
+1. Every sponsoring issue will start with "Sponsoring"
+2. To get the donation the pr title must be: "Fix: " + ${issue}
 
 ## Architechture
 
@@ -14,8 +19,19 @@ Possibility to activate atFides by creating a new issue or by commenting on an i
 |              | ----> |  > branch out    | ---> |           |
 | (run server) |       |  based on event  |      |  payload  |
 +--------------+       +------------------+      +-----------+
+```
+
+Chain reaction: when pr gets merged
 
 ```
++--------+       +------------------+      +----------------+
+| start  |       | Pull all opened  |      |  Launch        |
+|  with  | ----> | issues starting  | ---> |  transaction   |
+| Fix:?  |       |  "Sponsoring:"   |      |  when matching |
++--------+       +------------------+      +----------------+
+```
+
+> We will worry about some NLP later
 
 ## Lexicon
 
@@ -36,4 +52,10 @@ When configuring a webhook, you can choose which events you would like to receiv
 
 Each event type has a specific payload format with the relevant information.
 
-> All event payloads mirror `the payloads for the Event types` 
+> All event payloads mirror `the payloads for the Event types`
+
+## exp: (later)
+
+Possibility to activate atFides by creating a new issue or by commenting on an issue.
+
+> anybody on Github can set up a repo to activate atfides
