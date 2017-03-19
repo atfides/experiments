@@ -42,6 +42,10 @@ To analyze payload before transaction, make sure:
 
 > We will worry about some NLP later && we only care about dev in master
 
+## Dev
+
+Currently experimenting with [ngrok](https://ngrok.com/). Read this [article](https://medium.com/@mohamedhayibor/minimalist-dive-into-webhooks-a660a826e22).
+
 ## Lexicon
 
 ### Webhooks:
@@ -64,7 +68,7 @@ Each event type has a specific payload format with the relevant information.
 
 > All event payloads mirror `the payloads for the Event types`
 
-## exp: (later)
+#### exp: (later)
 
 Possibility to activate atFides by creating a new issue or by commenting on an issue.
 
