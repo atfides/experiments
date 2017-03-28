@@ -1,5 +1,7 @@
 Exploring the [Github webhooks api](https://developer.github.com/v3/repos/hooks/).
 
+#### This project is on hold, checkout [commiteth](https://commiteth.com), that [team](https://github.com/status-im/commiteth) is doing a great job.
+
 ## Example of the most basic interaction (MVP)
 
 1. user A: "Sponsoring $20 to get a better test coverage"
